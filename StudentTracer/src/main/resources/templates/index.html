@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student Grade Tracker</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+
+</head>
+<body>
+<h2>Add Student</h2>
+<form action="/add" method="post">
+    Name: <input type="text" name="name" required><br>
+    Marks: <input type="number" name="marks" required><br>
+    <button type="submit">Add Student</button>
+</form>
+
+<h2>All Students</h2>
+<table border="1">
+    <tr><th>Name</th><th>Marks</th></tr>
+    <tr th:each="student : ${students}">
+        <td th:text="${student.name}"></td>
+        <td th:text="${student.marks}"></td>
+    </tr>
+</table>
+
+<h2>Summary</h2>
+<p>Average: <span th:text="${summary.average}"></span></p>
+<p>Highest: <span th:text="${summary.highest}"></span></p>
+<p>Lowest: <span th:text="${summary.lowest}"></span></p>
+</body>
+</html>
